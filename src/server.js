@@ -28,6 +28,23 @@ export const setupServer = ()=> {
          });
      });
 
+     app.get("/contacts/:id", async(req, res)=> {
+        const {id} = req.params;
+        const data = await contactServices.getContactById(id);
+
+        if(!data) {
+            return res.status(404).json({
+                message: `Contact with id=${id} not found`
+            });
+        }
+
+        res.json({
+            status: 200,
+            message: `Contact with ${id} successfully find`,
+            data,
+        });
+    });
+
 
     app.use((req, res)=> {
         res.status(404).json({
