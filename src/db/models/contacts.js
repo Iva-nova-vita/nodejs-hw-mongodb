@@ -24,7 +24,6 @@ const contactSchema = new Schema({
         required: true,
         default: "personal",
     }
-    
 }, {versionKey: false, timestamps: true});
 
 const ContactCollection = model("contact", contactSchema);
