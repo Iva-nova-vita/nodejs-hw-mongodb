@@ -7,9 +7,12 @@ export const getAllContacts = async ({
     page,
     sortBy = "_id", 
     sortOrder = SORT_ORDER[0],
+    userId
 })=> {
     const skip = (page - 1) * perPage;
-    const contactQuery = ContactCollection.find(); 
+    const contactQuery = ContactCollection.find({
+        userId: userId,
+      }); 
 
     const data = await contactQuery.sort({[sortBy]: sortOrder}).skip(skip).limit(perPage);
     
