@@ -29,7 +29,14 @@ export const getAllContacts = async ({
     };
 };
 
-export const getContactById = (id)=> ContactCollection.findById(id);
+export const getContactById = async (id, userId)=> {
+      const contactQuery = ContactCollection.findById(id);
+      const contact = contactQuery.findOne({
+        userId: userId,
+      }); 
+      return contact;
+     
+};
 
 
 export const createContact = payload => ContactCollection.create(payload);
