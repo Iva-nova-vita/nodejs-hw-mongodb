@@ -9,7 +9,6 @@ import { env } from '../utils/env.js';
 import { sendEmail } from '../utils/sendMail.js';
 
 import { accessTokenLifetime, refreshTokenLifetime } from "../constants/users.js";
-import { SMTP } from '../constants/index.js';
 
 const createSession = ()=> {
     const accessToken = randomBytes(30).toString("base64");
@@ -114,7 +113,7 @@ export const requestResetToken = async (email) => {
       },
     );
     await sendEmail({
-        from: env(SMTP.SMTP_FROM),
+        from: env('SMTP_FROM'),
         to: email,
         subject: 'Reset your password',
         html: `<p>Click <a href="${env('APP_DOMAIN')}/reset-password?token=${resetToken}">here</a> to reset your password!</p>`,
