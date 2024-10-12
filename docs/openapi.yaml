@@ -16,9 +16,12 @@ servers:
   - url: http://localhost:3000
   - url: https://example.com/api/v1
 paths:
-  /movies:
+  /contacts:
     get: 
       $ref: ../swagger/paths/contacts/get.yaml
+  /students/{id}:
+    get:
+      $ref: ../swagger/paths/contacts/{id}/get.yaml
 components:
   securitySchemes:
     bearerAuth:
