@@ -19,7 +19,9 @@ paths:
   /contacts:
     get: 
       $ref: ../swagger/paths/contacts/get.yaml
-  /students/{id}:
+    post:
+      $ref: ../swagger/paths/contacts/post.yaml
+  /contacts/{id}:
     get:
       $ref: ../swagger/paths/contacts/{id}/get.yaml
 components:
